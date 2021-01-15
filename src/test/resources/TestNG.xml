@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test name="logIn">
+        <parameter name="userName" value="jkosolap@gmail.com"/>
+        <parameter name="password" value="P@$$word"/>
+        <classes>
+            <class name="tests.AuthorizationHappyPass"/>
+        </classes>
+    </test>
+</suite>
