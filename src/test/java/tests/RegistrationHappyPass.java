@@ -6,14 +6,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.itPlatform.BasePage;
 
-import java.io.IOException;
-
 import static com.codeborne.selenide.Selenide.open;
 import static common.steps.CommonSteps.checkUrl;
+import static common.utils.CsvWriter.writeToCSVFile;
+import static common.utils.ExcelWriter.writeToExcelFile;
 
 public class RegistrationHappyPass extends BasePage {
     @BeforeMethod
-    public void setUp2() throws IOException {
+    public void setUp2()  {
         open(IT_Platforma_Links.IT_PLATFORMA_REGISTRATION_PAGE.getValue());
     }
 
@@ -31,7 +31,8 @@ public class RegistrationHappyPass extends BasePage {
         //Verification
         checkUrl(IT_Platforma_Links.IT_PLATFORMA_MAIN_PAGE.getValue(), 5);
         mainPage.verifyGreetingText(userName);
-//        writeToExcelFile(userName, email, password);
+        writeToExcelFile(userName, email, password);
+        writeToCSVFile(userName, email, password, true);
     }
 
 }
