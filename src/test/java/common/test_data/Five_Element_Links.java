@@ -1,4 +1,4 @@
-package common.testData;
+package common.test_data;
 
 public enum Five_Element_Links {
     FIVE_ELEMENT_MAIN_PAGE("https://5element.ua/"),

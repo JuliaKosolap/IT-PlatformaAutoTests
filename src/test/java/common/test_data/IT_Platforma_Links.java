@@ -1,4 +1,4 @@
-package common.testData;
+package common.test_data;
 
 public enum IT_Platforma_Links {
 

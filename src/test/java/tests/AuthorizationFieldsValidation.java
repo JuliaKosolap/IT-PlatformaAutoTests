@@ -1,17 +1,19 @@
 package tests;
 
-import common.testData.RandomData;
+import common.config.Props;
+import common.test_data.IT_Platforma_Links;
+import common.test_data.RandomData;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BasePage;
+import pages.itPlatform.BasePage;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class AuthorizationValidateFields extends BasePage {
+public class AuthorizationFieldsValidation extends BasePage {
 
     @BeforeMethod
     public void setUp2() {
-        open("https://it-platforma.website/login/");
+        open(IT_Platforma_Links.IT_PLATFORMA_LOGIN_PAGE.getValue());
     }
 
     @Test
@@ -28,8 +30,8 @@ public class AuthorizationValidateFields extends BasePage {
 
     public void userNameDoesNotExist() {
         //Steps
-        loginPage.fillUserNameField(RandomData.randomString());
-        loginPage.fillPasswordField(RandomData.randomString());
+        loginPage.fillUserNameField(RandomData.randomString(10));
+        loginPage.fillPasswordField(RandomData.randomPassword());
         loginPage.pressLoginButton();
         //Verification
         loginPage.verifyErrorMessage1("Неизвестное имя пользователя. Перепроверьте или попробуйте ваш адрес email.");
@@ -39,12 +41,10 @@ public class AuthorizationValidateFields extends BasePage {
 
     public void passwordNotValid() {
         //Steps
-        String userName = "jkosolap@gmail.com";
-        loginPage.fillUserNameField(userName);
-        String randomPassword = RandomData.randomString();
-        loginPage.fillPasswordField(randomPassword);
+        loginPage.fillUserNameField(Props.login);
+        loginPage.fillPasswordField(RandomData.randomString(10));
         loginPage.pressLoginButton();
         //Verification
-        loginPage.verifyErrorMessage1(": Введённый вами пароль для адреса " + userName + " неверен.");
+        loginPage.verifyErrorMessage1(": Введённый вами пароль для адреса " + Props.login + " неверен.");
     }
 }
