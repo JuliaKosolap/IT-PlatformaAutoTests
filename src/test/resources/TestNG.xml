@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="classes" thread-count="1">
+    <parameter name="browser" value="chrome"/>
     <listeners>
         <listener class-name="common.listeners.CustomListener"/>
         <listener class-name="common.listeners.RetryListener"/>
     </listeners>
     <test name="AuthorizationHappyPass">
-        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.AuthorizationHappyPass"/>
         </classes>
     </test>
     <test name="AuthorizationValidateFields">
-        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.AuthorizationFieldsValidation"/>
         </classes>
     </test>
     <test name="RegistrationHappyPass">
-        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.RegistrationHappyPass"/>
         </classes>
     </test>
+    <test name="RegistrationFieldsValidation">
+        <classes>
+            <class name="tests.RegistrationFieldsValidation"/>
+        </classes>
+    </test>
+    <test name="RegistrationEmailAlreadyExists">
+        <classes>
+            <class name="tests.RegistrationEmailAlreadyExists"/>
+        </classes>
+    </test>
+    <test name="MainPageCheckBrokenMenuLinks">
+        <classes>
+            <class name="tests.MainPageCheckBrokenMenuLinks"/>
+        </classes>
+    </test>
+    <test name="MainPageCheckComments">
+        <classes>
+            <class name="tests.MainPageCheckComments"/>
+        </classes>
+    </test>
+    <test name="MainPageCheckPosts">
+        <classes>
+            <class name="tests.MainPageCheckPosts"/>
+        </classes>
+    </test>
+    <test name="MainPageSearch">
+        <classes>
+            <class name="tests.MainPageSearch"/>
+        </classes>
+    </test>
+
 </suite>

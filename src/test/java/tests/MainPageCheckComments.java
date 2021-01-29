@@ -10,6 +10,7 @@ import pages.itPlatform.BasePage;
 import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.open;
+import static common.steps.CommonSteps.checkUrl;
 
 public class MainPageCheckComments extends BasePage {
 
@@ -27,6 +28,7 @@ public class MainPageCheckComments extends BasePage {
         commentsPage.submitComment(comment,
                 RandomData.randomUserName(), Props.login);
         //Verification
+        checkUrl("unapproved", 5);
         commentsPage.assertComment(comment);
 
     }

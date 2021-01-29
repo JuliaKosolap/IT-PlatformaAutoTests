@@ -8,7 +8,10 @@ import pages.itPlatform.BasePage;
 
 import java.io.IOException;
 
+
+import static common.steps.CommonSteps.checkUrl;
 import static com.codeborne.selenide.Selenide.open;
+
 
 public class MainPageSearch extends BasePage {
 
@@ -26,6 +29,7 @@ public class MainPageSearch extends BasePage {
     @Test(dataProvider = "searchWords")
     public void verifySearchField(String searchWord) {
         mainPage.fillSearchField(searchWord);
+        checkUrl(searchWord, 5);
         mainPage.verifyArticleIsFound(searchWord);
     }
 }

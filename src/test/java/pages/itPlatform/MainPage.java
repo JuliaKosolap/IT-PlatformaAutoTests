@@ -10,23 +10,20 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class MainPage {
 
-    SelenideElement greetingText = $(byXpath("//a[text()='Привет, ']//span[@class='display-name']"));
-    SelenideElement searchField = $(byXpath("//input[@id='ocean-search-form-1']"));
-    SelenideElement articleTitle = $(byXpath("//a[@rel='bookmark']"));
-    SelenideElement commentsLink = $(byXpath("//a[@class='comments-link']"));
-//    SelenideElement commentsLink = $(byXpath("//article[@id='post-131']//a[@class='comments-link']"));
+ MainPageLocators locators = new MainPageLocators();
+
 
 
     @Step
     public void verifyGreetingText(String userName) {
-        Assert.assertTrue(greetingText.getText().contains(userName));
+        Assert.assertTrue(locators.greetingText.getText().contains(userName));
     }
 
 
     @Step
     public void fillSearchField(String searchWord) {
-        searchField.sendKeys(searchWord);
-        searchField.sendKeys(Keys.ENTER);
+        locators.searchField.sendKeys(searchWord);
+        locators.searchField.sendKeys(Keys.ENTER);
     }
 
     @Step
@@ -37,7 +34,7 @@ public class MainPage {
     @Step
     public void verifyArticleIsFound(String searchWord) {
 
-        Assert.assertTrue(articleTitle.getText().toLowerCase().contains(searchWord));
+        Assert.assertTrue(locators.articleTitle.getText().toLowerCase().contains(searchWord));
 
     }
     @Step
@@ -49,6 +46,6 @@ public class MainPage {
     }
     @Step
     public void goToCommentsPage() {
-        commentsLink.click();
+        locators.commentsLink.click();
     }
 }
